@@ -42,3 +42,8 @@ Each subsystem operates autonomously while responding to commands from a central
 ## Development Status
 
 This is active research code developed for experimental autonomous vehicle testing. All testing is conducted in controlled laboratory environments with appropriate safety protocols.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
