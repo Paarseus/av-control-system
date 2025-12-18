@@ -8,25 +8,44 @@ Simple Python class for real-time road segmentation on Jetson Nano with Intel Re
 pip install opencv-python numpy torch torchvision ultralytics pyrealsense2
 ```
 
-## Usage
+## Quick Example
 
 ```python
 from realsense_segmenter import RealSenseSegmenter
 import cv2
 
-# Initialize
 segmenter = RealSenseSegmenter()
+image = cv2.imread("road.jpg")
+segmented = segmenter.segment(image)
+cv2.imwrite("output.jpg", segmented)
+```
 
-# Option 1: With RealSense camera
+That's it. 3 lines of code.
+
+## Usage
+
+**With RealSense camera:**
+```python
+from realsense_segmenter import RealSenseSegmenter
+
+segmenter = RealSenseSegmenter()
 segmenter.connect_camera()
+
 while True:
     segmented = segmenter.get_segmented_frame()
     cv2.imshow("Output", segmented)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-segmenter.disconnect()
 
-# Option 2: With image file
+segmenter.disconnect()
+```
+
+**With image file:**
+```python
+from realsense_segmenter import RealSenseSegmenter
+import cv2
+
+segmenter = RealSenseSegmenter()
 image = cv2.imread("road.jpg")
 segmented = segmenter.segment(image)
 cv2.imwrite("output.jpg", segmented)
